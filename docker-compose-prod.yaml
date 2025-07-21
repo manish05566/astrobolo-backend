@@ -1,0 +1,36 @@
+version: "3.9"
+
+networks:
+  frontend:
+    name: "${COMPOSE_PROJECT_NAME}_network"
+
+volumes:
+  nginx:
+    name: ${COMPOSE_PROJECT_NAME}_nginx
+
+services:
+  api:
+    image: "${CI_REGISTRY_IMAGE}:${CI_ENVIRONMENT_NAME}-${APP_VERSION}"
+    restart: "unless-stopped"
+    networks:
+      - frontend
+    volumes:
+      - nginx:/etc/nginx/conf.d:rw
+    deploy:
+      mode: replicated
+      replicas: ${REPLICAS}
+
+  nginx:
+    image: nginx:stable-alpine
+    restart: "unless-stopped"
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    ports:
+      - 127.0.0.1:${PORT}:80
+    links:
+      - api
+    volumes:
+      - nginx:/etc/nginx/conf.d:rw
+    networks:
+      - frontend
+    depends_on:
+      - api

@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "paths": {
+      "@xapads/constant": ["libs/common/src/lib/constant/index.ts"],
+      "@xapads/dto": ["libs/common/src/lib/dto/index.ts"],
+      "@xapads/nest/modules": ["libs/modules/src/index.ts"],
+      "@xapads/nest/models": ["libs/modules/src/lib/database/models/index.ts"],
+      "@xapads/styles": ["libs/styles/src/index.ts"],
+      "@xapads/types": ["libs/common/src/lib/types/index.ts"],
+      "@xapads/ui/themes": ["libs/ui/src/themes/index.ts"],
+      "@xapads/ui/components": ["libs/ui/src/components"],
+      "@xapads/ui/hooks": ["libs/ui/src/hooks"],
+      "@xapads/ui/services": ["libs/ui/src/services"],
+      "@xapads/ui/utils": ["libs/ui/src/utils"],
+      "@xapads/utils": ["libs/utils/src/common/index.ts"],
+      "@xapads/nest/utils": ["libs/utils/src/nest/index.ts"],
+      "@xapads/web/*": ["apps/web/src/*"],
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

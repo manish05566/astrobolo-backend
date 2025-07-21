@@ -1,0 +1,10 @@
+export enum LoginSourceEnum {
+  ANONYMNOUS = 'ANONYMNOUS',
+  PASSWORD = 'PASSWORD',
+  OTP = 'OTP',
+  GOOGLE = 'GOOGLE',
+  TWITTER = 'TWITTER',
+  TWITCH = 'TWITCH',
+  MICROSOFT = 'MICROSOFT',
+  APPLE = 'APPLE'
+}
