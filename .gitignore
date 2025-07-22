@@ -1,1 +1,26 @@
-node_modules
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Nx cache
+.nx/
+
+# Environment
+.env
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Mac system files
+.DS_Store
+
+# IDE settings
+.vscode/
+.idea/
+
+# Optional: Ignore uploads if dynamic
+uploads/

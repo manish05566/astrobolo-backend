@@ -38,6 +38,7 @@
     "class-validator": "^0.14.1",
     "cls-hooked": "^4.2.2",
     "crypto": "^1.0.1",
+    "express": "^5.1.0",
     "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
     "google-auth-library": "^9.4.1",
