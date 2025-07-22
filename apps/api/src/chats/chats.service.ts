@@ -148,9 +148,6 @@ async fetchConversationList(userId: string, astrologerId: string) {
 }
 
 
-
-
-
   async getMessagesBetweenUsers(senderId: string, receiverId: string) {
     try {
 
