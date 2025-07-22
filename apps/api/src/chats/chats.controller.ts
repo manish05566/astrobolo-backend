@@ -23,9 +23,6 @@ import * as fs from 'fs';
 @Controller("chat")
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
- 
-
-
 
 
 @Get('conversations')
@@ -38,6 +35,24 @@ async fetchConversation(
   console.log('hererere conversation')
   return this.chatService.fetchConversationList(userId, astrologerId);
 }
+
+
+ @Get("messages")
+  @UseGuards(JwtAuthGuard)
+  async getMessages(
+    @Query("senderId") senderId: string,
+    @Query("receiverId") receiverId: string
+  ) {
+
+    console.log('fetch chat conversation');
+    return this.chatService.getMessagesBetweenUsers(senderId, receiverId);
+  }
+
+  @Get("unread-count/:receiverId")
+  @UseGuards(JwtAuthGuard)
+  getUnreadCount(@Param("receiverId") receiverId: string) {
+    return this.chatService.getUnreadCount(receiverId);
+  }
 
 
 @Get(':userId')
@@ -71,22 +86,7 @@ async getConversation(@Param('userId') userId: string) {
     };
   }
 
-  @Get("messages")
-  @UseGuards(JwtAuthGuard)
-  async getMessages(
-    @Query("senderId") senderId: string,
-    @Query("receiverId") receiverId: string
-  ) {
-
-    console.log('fetch chat conversation');
-    return this.chatService.getMessagesBetweenUsers(senderId, receiverId);
-  }
-
-  @Get("unread-count/:receiverId")
-  @UseGuards(JwtAuthGuard)
-  getUnreadCount(@Param("receiverId") receiverId: string) {
-    return this.chatService.getUnreadCount(receiverId);
-  }
+ 
 
   @Patch("mark-read/:customerId")
   @UseGuards(JwtAuthGuard)
