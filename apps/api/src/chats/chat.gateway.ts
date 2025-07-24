@@ -250,6 +250,25 @@ handleCustomerReady(
 }
 
 
+@SubscribeMessage('cancel_chat_request')
+handleCancelChatRequest(
+  @MessageBody() data: { senderId: string; receiverId: string; roomId: string }
+) {
+  // remove from pending map
+  const reqSet = pendingRequests.get(data.receiverId);
+  if (reqSet) {
+    reqSet.delete(data.senderId);
+    pendingRequests.set(data.receiverId, reqSet);
+  }
+  // notify astrologer UI to drop it
+  this.server.to(data.receiverId).emit('cancel_chat_request', data);
+}
+
+
+
+
+
+
 
 
 
